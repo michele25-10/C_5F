@@ -45,9 +45,8 @@ int NoDoppioni(int numeri[]){
     return DIM-k;   //ritorno la grandezza dell'array
 }
 
-void PariDispari(int numeri[], int grandezza){
-    int pari[grandezza];
-    int dispari[grandezza]; 
+void PariDispari(int numeri[], int grandezza, int numeriPari[], int dispari[]){
+    printf("grandezza: %d\n", grandezza); 
     int j, k = 0; 
 
     int temp = 0;
@@ -61,9 +60,9 @@ void PariDispari(int numeri[], int grandezza){
         }
     }
     
-    for(int i = 0; i<grandezza; i++){
+   for(int i = 0; i<grandezza; i++){
         if(numeri[i] % 2 == 0){
-            pari[j] = numeri[i]; 
+            numeriPari[j] = numeri[i];
             j++;
         }else{ 
             dispari[k] = numeri[i];
@@ -80,13 +79,14 @@ void PariDispari(int numeri[], int grandezza){
             }
         }
     }
+    
     printf("pari\n"); 
     for(int i = 0; i<j; i++){
-        printf("%d", pari[i]);
+        printf("%d\n", numeriPari[i]);
     }
     printf("dispari\n"); 
     for(int i = 0; i<k; i++){
-        printf("%d", dispari[i]);
+        printf("%d\n", dispari[i]);
     }
 
 }
@@ -94,10 +94,13 @@ void PariDispari(int numeri[], int grandezza){
 int main(){
     int numeri[DIM];
     int grandezza = DIM; 
+
     PopolaArray(numeri);
     Frequenza(numeri);
     grandezza = NoDoppioni(numeri);
-    PariDispari(numeri, grandezza);
+    int dispari[grandezza];
+    int pari[grandezza];
+    PariDispari(numeri, grandezza, pari, dispari);
     
 
     return 0; 
